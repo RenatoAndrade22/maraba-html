@@ -1,0 +1,1863 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jornal Marabá - Portal de Notícias</title>
+    <meta name="description" content="Portal de notícias de Marabá - PA">
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=cambria:400,700&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --verde-brasil: #009b3a;
+            --verde-brasil-dark: #007a2e;
+            --verde-brasil-light: #00c44a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        hr {
+            height: 1px;
+            border: none;
+            background-color: var(--verde-brasil);
+        }
+
+        .font-cambria {
+            font-family: Cambria, Georgia, serif;
+        }
+
+        .font-calibri {
+            font-family: Calibri, Candara, sans-serif;
+        }
+
+        .font-arial {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .bg-verde-brasil {
+            background-color: var(--verde-brasil);
+        }
+
+        .text-verde-brasil {
+            color: var(--verde-brasil);
+        }
+
+        .border-verde-brasil {
+            border-color: var(--verde-brasil);
+        }
+
+        .hover-verde-brasil:hover {
+            background-color: var(--verde-brasil-dark);
+        }
+
+        .location-date {
+            margin-left: 150px;
+        }
+
+        .top-bar {
+            background-color: #FEEB2C70;
+            border-bottom: 1px solid #c2c2c2;
+            color: #333;
+            padding: 8px 0;
+            font-size: 18px;
+            font-family: Calibri, Candara, sans-serif;
+        }
+
+        .top-bar a {
+            color: #333;
+            text-decoration: none;
+            margin-left: 15px;
+            transition: opacity 0.3s;
+        }
+
+        .top-bar a:hover {
+            opacity: 0.8;
+        }
+
+        .top-links {
+            margin-left: 50px;
+        }
+
+
+        .top-links-spacer {
+            display: inline-block;
+            width: 162px;
+        }
+
+        .social-icons {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: 20px;
+        }
+
+        .emancipacao {
+            display: none;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            transition: all 0.3s;
+            margin-left: 0;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.1);
+            opacity: 0.9;
+        }
+
+        .social-icons img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .temperature {
+            color: #666666;
+            margin-right: 10px;
+        }
+
+        .date-separator {
+            margin-left: 20px;
+        }
+
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 100%;
+            font-weight: 600;
+        }
+
+        .top-bar-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .top-bar-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .branding-area {
+            background-color: white;
+        }
+
+        .branding-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .branding-area h1 {
+            font-family: Cambria, Georgia, serif;
+            font-size: 6.9rem;
+            color: var(--verde-brasil);
+            font-weight: 700;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .logo-title {
+            flex-wrap: wrap;
+        }
+
+        .logo-image {
+            height: 70px;
+            width: auto;
+            vertical-align: baseline;
+            margin-bottom: 43px;
+        }
+
+        .branding-area .tagline {
+            font-family: Arial, sans-serif;
+            color: #666;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .branding-icons {
+            position: absolute;
+            right: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+            margin-top: -83px;
+        }
+
+        .branding-icon {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .branding-icon:hover {
+            opacity: 0.7;
+        }
+
+        .mobile-icons {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .mobile-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-icons img {
+            width: 22px;
+            height: 22px;
+        }
+
+        .mobile-icons .branding-icon {
+            cursor: pointer;
+        }
+
+        .main-nav {
+            background-color: white;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .main-nav li {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .main-nav > ul > li::before {
+            content: "-";
+            color: #333;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+
+        .main-nav > ul > li:first-child::before {
+            content: none;
+            margin-right: 0;
+        }
+
+        .main-nav > ul > li > a {
+            display: block;
+            color: #333;
+            text-decoration: none;
+            padding: 0px 5px;
+            font-family: Arial, sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .main-nav > ul > li > a:hover {
+            color: var(--verde-brasil);
+        }
+
+        .has-dropdown > a {
+            cursor: pointer;
+        }
+
+        .dropdown-menu {
+            display: none !important;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+            border-bottom: 3px solid var(--verde-brasil);
+            border-radius: 0 0 4px 4px;
+        }
+
+        .dropdown-menu li {
+            list-style: none;
+        }
+
+        .dropdown-menu li:last-child a {
+            border-bottom: none;
+        }
+
+        .dropdown-menu a {
+            width: 100%;
+            display: block;
+            color: #333;
+            padding: 12px 18px;
+            border-bottom: 1px solid #eee;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: var(--verde-brasil);
+            color: white;
+            border-bottom-color: var(--verde-brasil);
+        }
+
+        .has-dropdown.open > .dropdown-menu {
+            display: block !important;
+        }
+
+        .ad-header {
+            width: 100%;
+            padding: 15px 0;
+            margin-bottom: 20px;
+            background: #afafaf;
+        }
+
+        .ad-header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .ad-header-placeholder {
+            width: 100%;
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .pesquisa-popular {
+            background-color: white;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .pesquisa-popular h2 {
+            font-family: "Arial Rounded MT", Arial, sans-serif;
+            color: #fff200;
+            background-color: #000;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            padding: 3px 8px 9px 8px;
+            line-height: 2rem;
+            display: inline-block;
+        }
+
+        .pesquisa-popular h3 {
+            font-family: Arial, sans-serif;
+            font-size: 1.4rem;
+            color: #000;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .opcoes-radio {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 25px;
+            justify-content: center;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 8px 12px;
+        }
+
+        .radio-option input[type="radio"] {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .radio-option.bom input[type="radio"] {
+            background-color: #00a2e8;
+        }
+
+        .radio-option.bom input[type="radio"]:checked {
+            background-color: white;
+            border-color: #00a2e8;
+        }
+
+        .radio-option.razoavel input[type="radio"] {
+            background-color: #999999;
+        }
+
+        .radio-option.razoavel input[type="radio"]:checked {
+            background-color: white;
+            border-color: #999999;
+        }
+
+        .radio-option.ruim input[type="radio"] {
+            background-color: #ed1c24;
+        }
+
+        .radio-option.ruim input[type="radio"]:checked {
+            background-color: white;
+            border-color: #ed1c24;
+        }
+
+        .radio-label {
+            font-family: Arial, sans-serif;
+            font-size: 15px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .enquete-section {
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .select-vereadores {
+            width: 530px;
+            margin: 8px auto 0;
+            padding: 8px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-family: Arial, sans-serif;
+            font-size: 15px;
+            transition: border-color 0.3s;
+            background-color: white;
+            display: block;
+        }
+
+        .select-vereadores:focus {
+            outline: none;
+            border-color: var(--verde-brasil);
+        }
+
+        .custom-select-wrapper {
+            position: relative;
+            width: 530px;
+            margin: 8px auto 0;
+        }
+
+        .custom-select-trigger {
+            padding: 8px;
+            border: 2px solid #ddd;
+            border-radius: 0px;
+            font-family: Arial, sans-serif;
+            font-size: 15px;
+            background-color: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: border-color 0.3s;
+        }
+
+        .custom-select-trigger:hover,
+        .custom-select-trigger:focus {
+            border-color: var(--verde-brasil);
+            outline: none;
+        }
+
+        .custom-select-trigger::after {
+            content: '';
+            border: 5px solid transparent;
+            border-top-color: #666;
+            margin-top: 3px;
+        }
+
+        .custom-select-wrapper.open .custom-select-trigger {
+            border-color: var(--verde-brasil);
+            border-radius: 8px 8px 0 0;
+        }
+
+        .custom-select-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: #32281e;
+            border: 2px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+
+        .custom-select-wrapper.open .custom-select-dropdown {
+            display: block;
+        }
+
+        .custom-select-option {
+            padding: 10px 12px;
+            color: white;
+            cursor: pointer;
+            border-bottom: 1px solid #4a4036;
+            font-family: Arial, sans-serif;
+            font-size: 15px;
+            transition: background-color 0.2s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: left;
+        }
+
+        .custom-select-option:last-child {
+            border-bottom: none;
+        }
+
+        .custom-select-option:hover {
+            background-color: #4a4036;
+        }
+
+        .vereador-info {
+            font-family: Calibri, sans-serif;
+            line-height: 19px;
+        }
+
+        .vereador-vulgo {
+            font-weight: 700;
+        }
+
+        .vereador-partido {
+            font-weight: 400;
+        }
+
+        .vereador-nome {
+            font-style: italic;
+            font-weight: 400;
+            display: block;
+            color: #fff;
+        }
+
+        .custom-select-option.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .option-radio {
+            width: 16px;
+            height: 16px;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .option-radio-inner {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: transparent;
+            transition: background-color 0.2s;
+        }
+
+        .custom-select-option.selected .option-radio-inner {
+            background-color: #fbb976;
+        }
+
+        .custom-select-option.selected .option-radio {
+            border-color: #fbb976;
+        }
+
+        .custom-select-option.disabled .option-radio {
+            opacity: 0.5;
+        }
+
+        .vereadores-selecionados {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+            min-height: 30px;
+            justify-content: center;
+        }
+
+        .vereador-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--verde-brasil);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-family: Arial, sans-serif;
+        }
+
+        .vereador-tag .remove-tag {
+            cursor: pointer;
+            font-weight: bold;
+            opacity: 0.8;
+        }
+
+        .vereador-tag .remove-tag:hover {
+            opacity: 1;
+        }
+
+        .contador-selecao {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+            font-family: Calibri, sans-serif;
+            text-align: center;
+        }
+
+        .buttons-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            justify-content: center;
+            padding-top: 20px;
+        }
+
+        .btn-votar {
+            background-color: #000;
+            color: #fff200;
+            border: none;
+            padding: 4px 8px;
+            font-family: "Arial Rounded MT", Arial, sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+            border-radius: 0px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-votar:hover {
+            background-color: #222;
+            transform: scale(1.05);
+        }
+
+        .btn-resultado {
+            background-color: #000;
+            color: #fff200;
+            border: none;
+            padding: 1px 8px;
+            font-family: "Arial Rounded MT", Arial, sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+            border-radius: 0px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-resultado:hover {
+            background-color: #222;
+            transform: scale(1.05);
+        }
+
+        .resultado-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .resultado-modal.active {
+            display: flex;
+        }
+
+        .resultado-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        .resultado-content h2 {
+            font-family: "Arial Rounded MT", Arial, sans-serif;
+            color: #fff200;
+            background-color: #000;
+            margin-bottom: 20px;
+            text-align: center;
+            padding: 8px 16px;
+            display: inline-block;
+        }
+
+        .resultado-item {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .resultado-item h4 {
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .resultado-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .bar-label {
+            font-family: Calibri, sans-serif;
+            font-size: 14px;
+            min-width: 80px;
+        }
+
+        .bar-container {
+            flex: 1;
+            height: 25px;
+            background-color: #eee;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s;
+        }
+
+        .bar-fill.bom { background-color: #00a2e8; }
+        .bar-fill.razoavel { background-color: #999999; }
+        .bar-fill.ruim { background-color: #ed1c24; }
+        .bar-fill.verde { background-color: var(--verde-brasil); }
+
+        .bar-percent {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            min-width: 50px;
+            text-align: right;
+        }
+
+        .close-modal {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: Arial, sans-serif;
+            margin-top: 20px;
+            display: block;
+            width: 100%;
+        }
+
+        .close-modal:hover {
+            background-color: #555;
+        }
+
+        .success-message {
+            background-color: var(--verde-brasil);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin-bottom: 20px;
+        }
+
+        .total-votos {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: Arial, sans-serif;
+            color: #666;
+        }
+
+        .ad-placeholder {
+            background-color: #f9f9f9;
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+
+        .main-content-area {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 30px 0;
+        }
+
+        .news-section {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 25px;
+        }
+
+        .news-section h2 {
+            font-family: Cambria, Georgia, serif;
+            color: var(--verde-brasil);
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--verde-brasil);
+        }
+
+        .cookie-banner {
+            background-color: white;
+            color: #333;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cookie-banner p {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            max-width: 900px;
+            line-height: 1.5;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .btn-cookie {
+            background-color: #3B82F6;
+            border-radius: 0px;
+            color: white;
+            border: none;
+            padding: 15px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            white-space: nowrap;
+        }
+
+        .btn-cookie:hover {
+            background-color: #2563EB;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 40px 0 80px;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .footer h4 {
+            font-family: Cambria, Georgia, serif;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: var(--verde-brasil-light);
+        }
+
+        .footer ul {
+            list-style: none;
+        }
+
+        .footer ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer a {
+            color: #ccc;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: white;
+        }
+
+        .footer p {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .branding-area h1 {
+                font-size: 2rem;
+                gap: 10px;
+            }
+
+            .logo-image {
+                height: 40px;
+            }
+
+            .branding-icons {
+                right: 10px;
+                gap: 10px;
+            }
+
+            .branding-icon {
+                width: 20px;
+                height: 20px;
+            }
+
+            .top-bar {
+                text-align: center;
+            }
+
+            .top-bar-content {
+                justify-content: center;
+            }
+
+            .top-bar-left {
+                justify-content: center;
+                width: 100%;
+                margin-bottom: 10px;
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .date-separator {
+                margin-left: 0;
+            }
+
+            .top-bar-right {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .top-links {
+                margin-bottom: 10px;
+                margin-left: 0px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .top-links-spacer {
+                display: none;
+            }
+
+            .top-bar a {
+                margin-left: 8px;
+                margin-right: 8px;
+            }
+
+            .social-icons {
+                margin-left: 0;
+                margin-top: 5px;
+            }
+
+            .cookie-banner {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px 15px;
+            }
+
+            .cookie-banner p {
+                font-size: 13px;
+            }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 1400px) {
+            .container {
+                width: 1230px;
+            }
+            .location-date {
+                margin-left: 62px;
+            }
+        }
+
+        @media (max-width: 1230px) {
+
+            .container {
+                width: 990px;
+            }
+
+            .main-nav > ul > li > a{
+                font-size: 15px;
+                padding: 0px 8px;
+            }
+
+            .location-date {
+                margin-left: 0px;
+            }
+
+            .top-links {
+                margin-left: 24px;
+            }
+
+            .top-links-spacer {
+                width: 125px;
+            }
+
+            .top-bar {
+                font-size: 14px;
+            }
+
+            .branding-area h1 {
+                font-size: 5rem;
+            }
+
+            .logo-image {
+                height: 55px;
+                margin-bottom: 32px;
+            }
+
+            .branding-icons {
+                margin-top: -60px;
+            }
+
+            .main-nav ul {
+                max-width: 100%;
+                padding: 0 15px;
+            }
+
+            .main-nav > ul > li:nth-child(7)::before {
+                content: none;
+            }
+        }
+
+        @media (max-width: 992px) {
+
+            .container {
+                width: 560px;
+            }
+
+            .emancipacao {
+                display: inline;
+                margin-left: 20px;
+            }
+
+            .main-nav {
+                width: 530px;
+                margin: 0 auto;
+            }
+
+            .social-icons {
+                display: none;
+            }
+
+            .branding-icons {
+                display: none;
+            }
+
+            .mobile-icons {
+                display: flex;
+            }
+
+            .branding-wrapper {
+                flex-direction: column;
+                margin-top: 15px;
+            }
+
+            .top-bar-left {
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+                width: 100%;
+            }
+
+            .top-links-spacer {
+                width: 0px;
+            }
+
+            .branding-area h1 {
+                font-size: 3.5rem;
+            }
+
+            .logo-image {
+                height: 45px;
+                margin-bottom: 25px;
+            }
+
+            .location-date {
+                margin-left: 0;
+            }
+
+            .top-links {
+                margin-left: 0;
+            }
+
+            .top-bar {
+                font-size: 14px;
+            }
+
+            .select-vereadores,
+            .custom-select-wrapper {
+                width: 100%;
+                max-width: 530px;
+            }
+
+            .pesquisa-popular h2 {
+                font-size: 1.5rem;
+            }
+
+            .pesquisa-popular h3 {
+                font-size: 1.2rem;
+            }
+
+            .btn-votar,
+            .btn-resultado {
+                font-size: 18px;
+            }
+
+            .buttons-container {
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (max-width: 576px) {
+
+            .container {
+                width: 350px;
+            }
+
+            .main-nav {
+                width: 350px;
+            }
+
+            .main-nav > ul > li > a {
+                font-size: 10px;
+                padding: 0px 3px;
+            }
+
+            .top-bar-left{
+                gap: 0px;
+                margin-bottom: 0px;
+            }
+            .mobile-icons {
+                margin-bottom: 10px;
+            }
+
+            .date-separator {
+                margin-left: 10px;
+            }
+
+            .pesquisa-popular h2{
+                padding: 3px 8px 4px 8px;
+            }
+
+            .top-bar {
+                font-size: 10px;
+            }
+
+            .top-links {
+                margin-bottom: 0px;
+            }
+            .branding-area h1 {
+                font-size: 2.2rem;
+                gap: 8px;
+            }
+
+            .logo-image {
+                height: 35px;
+                margin-bottom: 18px;
+            }
+
+            .branding-icons {
+                position: static;
+                flex-direction: row;
+                margin-top: 15px;
+                justify-content: center;
+            }
+
+            .branding-wrapper {
+                flex-direction: column;
+            }
+
+            .pesquisa-popular {
+                padding: 15px;
+            }
+
+            .pesquisa-popular h2 {
+                font-size: 1.3rem;
+            }
+
+            .pesquisa-popular h3 {
+                font-size: 1rem;
+            }
+
+            .opcoes-radio {
+                flex-wrap: nowrap;
+                gap: 10px;
+            }
+
+            .radio-option {
+                width: auto;
+                padding: 6px 10px;
+            }
+
+            .radio-label {
+                font-size: 12px;
+            }
+
+            .radio-option input[type="radio"] {
+                width: 16px;
+                height: 16px;
+                margin-right: 6px;
+            }
+
+            .custom-select-wrapper {
+                max-width: 100%;
+            }
+
+            .vereador-info {
+                font-size: 13px;
+                line-height: 1.4;
+            }
+
+            .btn-votar,
+            .btn-resultado {
+                font-size: 14px;
+                padding: 4px 12px;
+            }
+
+            .buttons-container {
+                flex-direction: row;
+                flex-wrap: nowrap;
+                gap: 10px;
+            }
+
+            .buttons-container button {
+                width: auto;
+            }
+
+            .resultado-content {
+                padding: 20px;
+                width: 95%;
+            }
+
+            .resultado-bar {
+                flex-wrap: wrap;
+            }
+
+            .bar-label {
+                min-width: 60px;
+                font-size: 12px;
+            }
+
+            .bar-percent {
+                min-width: 40px;
+                font-size: 12px;
+            }
+
+            .footer {
+                padding: 30px 0 60px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .footer h4 {
+                text-align: center;
+            }
+
+            .footer ul {
+                text-align: center;
+            }
+
+            .footer-content > div:last-child p {
+                justify-content: center;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <div class="container top-bar-content">
+                <div class="top-bar-left">
+                    <div class="location-date">
+                        <span class="temperature">25°</span>
+                        <span>Marabá - PA</span>
+                        <span class="date-separator">23 de abril de 2026</span>
+                        <span class="emancipacao">113º ano de emancipação</span>
+                    </div>
+                    <nav class="top-links">
+                        <a href="#">Home</a>
+                        <span class="top-links-spacer"></span>
+                        <a href="#">Quem Somos</a>
+                        <a href="#">Fale Conosco</a>
+                        <a href="#">Política de Privacidade</a>
+                    </nav>
+                </div>
+                <div class="top-bar-right">
+                    
+                    <div class="social-icons">
+                        <a href="https://wa.me/5594999999999" target="_blank" title="WhatsApp" aria-label="WhatsApp">
+                            <img src="./img/icon-whatsapp.png" alt="WhatsApp">
+                        </a>
+                        <a href="https://instagram.com/jornalmara" target="_blank" title="Instagram" aria-label="Instagram">
+                            <img src="./img/icon-instagram.png" alt="Instagram">
+                        </a>
+                        <a href="https://facebook.com/jornalmara" target="_blank" title="Facebook" aria-label="Facebook">
+                            <img src="./img/icon-facebook.png" alt="Facebook">
+                        </a>
+                        <a href="mailto:contato@jornalmara.com.br" title="Email" aria-label="Email">
+                            <img src="./img/icon-email.png" alt="Email">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="branding-area">
+            <div class="container branding-wrapper">
+                <div class="mobile-icons">
+                    <a href="https://wa.me/5594999999999" target="_blank" title="WhatsApp" aria-label="WhatsApp">
+                        <img src="./img/icon-whatsapp.png" alt="WhatsApp">
+                    </a>
+                    <a href="https://instagram.com/jornalmara" target="_blank" title="Instagram" aria-label="Instagram">
+                        <img src="./img/icon-instagram.png" alt="Instagram">
+                    </a>
+                    <a href="https://facebook.com/jornalmara" target="_blank" title="Facebook" aria-label="Facebook">
+                        <img src="./img/icon-facebook.png" alt="Facebook">
+                    </a>
+                    <a href="mailto:contato@jornalmara.com.br" title="Email" aria-label="Email">
+                        <img src="./img/icon-email.png" alt="Email">
+                    </a>
+                    <img src="./img/DarkMode.png" alt="Dark Mode" class="branding-icon">
+                    <img src="./img/Libras.png" alt="Libras" class="branding-icon">
+                </div>
+                <h1 class="logo-title">
+                    Jornal
+                    <img src="./img/Logo-jornal.png" alt="Logo Jornal Marabá" class="logo-image">
+                    Marabá
+                </h1>
+                <div class="branding-icons">
+                    <img src="./img/DarkMode.png" alt="Dark Mode" class="branding-icon">
+                    <img src="./img/Libras.png" alt="Libras" class="branding-icon">
+                </div>
+            </div>
+        </div>
+
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#">Cidadania</a></li>
+                <li><a href="#">Comércio</a></li>
+                <li><a href="#">Notícias</a></li>
+                <li><a href="#">Política</a></li>
+                <li><a href="#">Saúde</a></li>
+                <li><a href="#">Veículos</a></li>
+                <li><a href="#">Imóveis</a></li>
+                <li class="has-dropdown">
+                    <a href="#">Colunistas</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Da Redação</a></li>
+                        <li><a href="#">Blog Delas</a></li>
+                        <li><a href="#">No Direito</a></li>
+                        <li><a href="#">Religare</a></li>
+                        <li><a href="#">Moda</a></li>
+                        <li><a href="#">Bem-Estar</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Empregos</a></li>
+                <li><a href="#">Eventos</a></li>
+                <li><a href="#">Fala Povo</a></li>
+            </ul>
+        </nav> 
+    </header>
+
+    <div class="cookie-banner" id="cookie-banner">
+        <p>Utilizamos cookies e outras tecnologias semelhantes para melhorar a sua experiência no portal personalizando publicidades, recomendando conteúdos e oferecendo serviços. Saiba a respeito consultando a nossa página de <a href="#" class="link">Política de Privacidade.</a></p>
+        <button class="btn-cookie" onclick="aceitarCookies()">OK. PROSSEGUIR!!</button>
+    </div>
+
+    <div class="ad-header">
+        <div class="ad-header-container">
+            <div class="ad-header-placeholder">
+                Publicidade - Banner Superior
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <main class="container">
+        <div class="main-content-area">
+            <section class="pesquisa-popular">
+                <h2>Pesquisa Popular</h2>
+                
+                <div class="enquete-section">
+                    <h3><i>O</i> <b>desempenho</b> <i>da</i> <b>Câmara Municipal</b> <i>de</i> <b>Marabá</b> <i>em 2025 foi:</i></h3>
+                    <div class="opcoes-radio">
+                        <label class="radio-option bom">
+                            <input type="radio" name="avaliacao_camara" value="bom" onchange="selectAvaliacao(this)">
+                            <span class="radio-label">BOM</span>
+                        </label>
+                        <label class="radio-option razoavel">
+                            <input type="radio" name="avaliacao_camara" value="razoavel" onchange="selectAvaliacao(this)">
+                            <span class="radio-label">RAZOÁVEL</span>
+                        </label>
+                        <label class="radio-option ruim">
+                            <input type="radio" name="avaliacao_camara" value="ruim" onchange="selectAvaliacao(this)">
+                            <span class="radio-label">RUIM</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="enquete-section">
+                    <h3><i>Indique</i> <b>de 1 até 5 vereadores de bons projetos</b> <i>em 2025:</i></h3>
+                    <div class="custom-select-wrapper" id="select_projetos_wrapper">
+                        <div class="custom-select-trigger" onclick="toggleDropdown('select_projetos_wrapper')">Selecione...</div>
+                        <div class="custom-select-dropdown" id="dropdown_projetos">
+                            <div class="custom-select-option" data-value="" onclick="selectVereadorProjeto('', 'Selecione...')">Selecione...</div>
+                            <div class="custom-select-option" data-value="aerton-grande" onclick="selectVereadorProjeto('aerton-grande', 'Aerton Grande - União Brasil (Aerton Lima da Cruz)')">Aerton Grande - União Brasil (Aerton Lima da Cruz)</div>
+                            <div class="custom-select-option" data-value="cabo-rodrigo" onclick="selectVereadorProjeto('cabo-rodrigo', 'Cabo Rodrigo - PL (Rodrigo Lima da Silva)')">Cabo Rodrigo - PL (Rodrigo Lima da Silva)</div>
+                            <div class="custom-select-option" data-value="dato-onibus" onclick="selectVereadorProjeto('dato-onibus', 'Dato do Ônibus - União Brasil (Deodato do Espírito Santo)')">Dato do Ônibus - União Brasil (Deodato do Espírito Santo)</div>
+                            <div class="custom-select-option" data-value="dean-guimaraes" onclick="selectVereadorProjeto('dean-guimaraes', 'Dean Guimarães - PSD (Claudean Pereira Guimarães)')">Dean Guimarães - PSD (Claudean Pereira Guimarães)</div>
+                            <div class="custom-select-option" data-value="dra-cristina-mutran" onclick="selectVereadorProjeto('dra-cristina-mutran', 'Dra. Cristina Mutran - MDB (Maria Cristina Coimbra Mutran)')">Dra. Cristina Mutran - MDB (Maria Cristina Coimbra Mutran)</div>
+                            <div class="custom-select-option" data-value="fernando-henrique" onclick="selectVereadorProjeto('fernando-henrique', 'Fernando Henrique - PL (Fernando Henrique Pereira da Silva)')">Fernando Henrique - PL (Fernando Henrique Pereira da Silva)</div>
+                            <div class="custom-select-option" data-value="ilker-moraes" onclick="selectVereadorProjeto('ilker-moraes', 'Ilker Moraes - MDB (Ilker Moraes Ferreira)')">Ilker Moraes - MDB (Ilker Moraes Ferreira)</div>
+                            <div class="custom-select-option" data-value="jocenilson-souza" onclick="selectVereadorProjeto('jocenilson-souza', 'Jocenilson Souza - PRD (Jocenilson Silva Souza)')">Jocenilson Souza - PRD (Jocenilson Silva Souza)</div>
+                            <div class="custom-select-option" data-value="maiana-stringari" onclick="selectVereadorProjeto('maiana-stringari', 'Maiana Stringari - PDT (Maiana Clara Rodrigues Stringari)')">Maiana Stringari - PDT (Maiana Clara Rodrigues Stringari)</div>
+                            <div class="custom-select-option" data-value="marcelo-alves" onclick="selectVereadorProjeto('marcelo-alves', 'Marcelo Alves - PT (Marcelo Alves dos Santos)')">Marcelo Alves - PT (Marcelo Alves dos Santos)</div>
+                            <div class="custom-select-option" data-value="marcio-sao-felix" onclick="selectVereadorProjeto('marcio-sao-felix', 'Márcio do São Félix - PSDB (Antônio Márcio Farias Gonçalves)')">Márcio do São Félix - PSDB (Antônio Márcio Farias Gonçalves)</div>
+                            <div class="custom-select-option" data-value="marcos-andrade" onclick="selectVereadorProjeto('marcos-andrade', 'Marcos Andrade - PSD (Marcos Almeida Sousa de Andrade)')">Marcos Andrade - PSD (Marcos Almeida Sousa de Andrade)</div>
+                            <div class="custom-select-option" data-value="marcos-paulo-agricultura" onclick="selectVereadorProjeto('marcos-paulo-agricultura', 'Marcos Paulo da Agricultura - PDT (Marcos Paulo E. Pereira)')">Marcos Paulo da Agricultura - PDT (Marcos Paulo E. Pereira)</div>
+                            <div class="custom-select-option" data-value="orlando-elias" onclick="selectVereadorProjeto('orlando-elias', 'Orlando Elias - PSB (Orlando da Silva Elias)')">Orlando Elias - PSB (Orlando da Silva Elias)</div>
+                            <div class="custom-select-option" data-value="pacheco" onclick="selectVereadorProjeto('pacheco', 'Pacheco - PL (Jimmyson Mesquita Pacheco)')">Pacheco - PL (Jimmyson Mesquita Pacheco)</div>
+                            <div class="custom-select-option" data-value="pastor-ronisteu" onclick="selectVereadorProjeto('pastor-ronisteu', 'Pastor Ronisteu - PL (Ronisteu da Silva Araújo)')">Pastor Ronisteu - PL (Ronisteu da Silva Araújo)</div>
+                            <div class="custom-select-option" data-value="pedrinho-correa" onclick="selectVereadorProjeto('pedrinho-correa', 'Pedrinho Corrêa - PRD (Pedro Corrêa Lima)')">Pedrinho Corrêa - PRD (Pedro Corrêa Lima)</div>
+                            <div class="custom-select-option" data-value="priscila-veloso" onclick="selectVereadorProjeto('priscila-veloso', 'Priscila Veloso - PSD (Priscila Duarte Veloso Silva)')">Priscila Veloso - PSD (Priscila Duarte Veloso Silva)</div>
+                            <div class="custom-select-option" data-value="ronaldo-33" onclick="selectVereadorProjeto('ronaldo-33', 'Ronaldo da 33 - PDT (Ronaldo Alves Araújo)')">Ronaldo da 33 - PDT (Ronaldo Alves Araújo)</div>
+                            <div class="custom-select-option" data-value="ubirajara-sompre" onclick="selectVereadorProjeto('ubirajara-sompre', 'Ubirajara Sompré - MDB (Ubirajara Nazareno Sompré)')">Ubirajara Sompré - MDB (Ubirajara Nazareno Sompré)</div>
+                            <div class="custom-select-option" data-value="vanda-americo" onclick="selectVereadorProjeto('vanda-americo', 'Vanda Américo - União Brasil (Vanda Régia Américo Gomes)')">Vanda Américo - União Brasil (Vanda Régia Américo Gomes)</div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="enquete-section">
+                    <h3><i>Qual o maior destaque de</i> <b>excelência do mandato em 2025:</b></h3>
+                    <div class="custom-select-wrapper" id="select_destaque_wrapper">
+                        <div class="custom-select-trigger" onclick="toggleDropdown('select_destaque_wrapper')">Selecione...</div>
+                        <div class="custom-select-dropdown" id="dropdown_destaque">
+                            <div class="custom-select-option" data-value="" onclick="selectVereadorDestaque('', 'Selecione...')">Selecione...</div>
+                            <div class="custom-select-option" data-value="aerton-grande" onclick="selectVereadorDestaque('aerton-grande', 'Aerton Grande - União Brasil (Aerton Lima da Cruz)')">Aerton Grande - União Brasil (Aerton Lima da Cruz)</div>
+                            <div class="custom-select-option" data-value="cabo-rodrigo" onclick="selectVereadorDestaque('cabo-rodrigo', 'Cabo Rodrigo - PL (Rodrigo Lima da Silva)')">Cabo Rodrigo - PL (Rodrigo Lima da Silva)</div>
+                            <div class="custom-select-option" data-value="dato-onibus" onclick="selectVereadorDestaque('dato-onibus', 'Dato do Ônibus - União Brasil (Deodato do Espírito Santo)')">Dato do Ônibus - União Brasil (Deodato do Espírito Santo)</div>
+                            <div class="custom-select-option" data-value="dean-guimaraes" onclick="selectVereadorDestaque('dean-guimaraes', 'Dean Guimarães - PSD (Claudean Pereira Guimarães)')">Dean Guimarães - PSD (Claudean Pereira Guimarães)</div>
+                            <div class="custom-select-option" data-value="dra-cristina-mutran" onclick="selectVereadorDestaque('dra-cristina-mutran', 'Dra. Cristina Mutran - MDB (Maria Cristina Coimbra Mutran)')">Dra. Cristina Mutran - MDB (Maria Cristina Coimbra Mutran)</div>
+                            <div class="custom-select-option" data-value="fernando-henrique" onclick="selectVereadorDestaque('fernando-henrique', 'Fernando Henrique - PL (Fernando Henrique Pereira da Silva)')">Fernando Henrique - PL (Fernando Henrique Pereira da Silva)</div>
+                            <div class="custom-select-option" data-value="ilker-moraes" onclick="selectVereadorDestaque('ilker-moraes', 'Ilker Moraes - MDB (Ilker Moraes Ferreira)')">Ilker Moraes - MDB (Ilker Moraes Ferreira)</div>
+                            <div class="custom-select-option" data-value="jocenilson-souza" onclick="selectVereadorDestaque('jocenilson-souza', 'Jocenilson Souza - PRD (Jocenilson Silva Souza)')">Jocenilson Souza - PRD (Jocenilson Silva Souza)</div>
+                            <div class="custom-select-option" data-value="maiana-stringari" onclick="selectVereadorDestaque('maiana-stringari', 'Maiana Stringari - PDT (Maiana Clara Rodrigues Stringari)')">Maiana Stringari - PDT (Maiana Clara Rodrigues Stringari)</div>
+                            <div class="custom-select-option" data-value="marcelo-alves" onclick="selectVereadorDestaque('marcelo-alves', 'Marcelo Alves - PT (Marcelo Alves dos Santos)')">Marcelo Alves - PT (Marcelo Alves dos Santos)</div>
+                            <div class="custom-select-option" data-value="marcio-sao-felix" onclick="selectVereadorDestaque('marcio-sao-felix', 'Márcio do São Félix - PSDB (Antônio Márcio Farias Gonçalves)')">Márcio do São Félix - PSDB (Antônio Márcio Farias Gonçalves)</div>
+                            <div class="custom-select-option" data-value="marcos-andrade" onclick="selectVereadorDestaque('marcos-andrade', 'Marcos Andrade - PSD (Marcos Almeida Sousa de Andrade)')">Marcos Andrade - PSD (Marcos Almeida Sousa de Andrade)</div>
+                            <div class="custom-select-option" data-value="marcos-paulo-agricultura" onclick="selectVereadorDestaque('marcos-paulo-agricultura', 'Marcos Paulo da Agricultura - PDT (Marcos Paulo E. Pereira)')">Marcos Paulo da Agricultura - PDT (Marcos Paulo E. Pereira)</div>
+                            <div class="custom-select-option" data-value="orlando-elias" onclick="selectVereadorDestaque('orlando-elias', 'Orlando Elias - PSB (Orlando da Silva Elias)')">Orlando Elias - PSB (Orlando da Silva Elias)</div>
+                            <div class="custom-select-option" data-value="pacheco" onclick="selectVereadorDestaque('pacheco', 'Pacheco - PL (Jimmyson Mesquita Pacheco)')">Pacheco - PL (Jimmyson Mesquita Pacheco)</div>
+                            <div class="custom-select-option" data-value="pastor-ronisteu" onclick="selectVereadorDestaque('pastor-ronisteu', 'Pastor Ronisteu - PL (Ronisteu da Silva Araújo)')">Pastor Ronisteu - PL (Ronisteu da Silva Araújo)</div>
+                            <div class="custom-select-option" data-value="pedrinho-correa" onclick="selectVereadorDestaque('pedrinho-correa', 'Pedrinho Corrêa - PRD (Pedro Corrêa Lima)')">Pedrinho Corrêa - PRD (Pedro Corrêa Lima)</div>
+                            <div class="custom-select-option" data-value="priscila-veloso" onclick="selectVereadorDestaque('priscila-veloso', 'Priscila Veloso - PSD (Priscila Duarte Veloso Silva)')">Priscila Veloso - PSD (Priscila Duarte Veloso Silva)</div>
+                            <div class="custom-select-option" data-value="ronaldo-33" onclick="selectVereadorDestaque('ronaldo-33', 'Ronaldo da 33 - PDT (Ronaldo Alves Araújo)')">Ronaldo da 33 - PDT (Ronaldo Alves Araújo)</div>
+                            <div class="custom-select-option" data-value="ubirajara-sompre" onclick="selectVereadorDestaque('ubirajara-sompre', 'Ubirajara Sompré - MDB (Ubirajara Nazareno Sompré)')">Ubirajara Sompré - MDB (Ubirajara Nazareno Sompré)</div>
+                            <div class="custom-select-option" data-value="vanda-americo" onclick="selectVereadorDestaque('vanda-americo', 'Vanda Américo - União Brasil (Vanda Régia Américo Gomes)')">Vanda Américo - União Brasil (Vanda Régia Américo Gomes)</div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="buttons-container">
+                    <button type="button" class="btn-votar" onclick="votar()">Votar</button>
+                    <button type="button" class="btn-resultado" onclick="mostrarResultado()">Resultado:</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h4>Jornal Marabá</h4>
+                    <p>O portal de notícias mais completo de Marabá e região, trazendo informação de qualidade para você.</p>
+                </div>
+                <div>
+                    <h4>Seções</h4>
+                    <ul>
+                        <li><a href="#">Cidadania</a></li>
+                        <li><a href="#">Comércio</a></li>
+                        <li><a href="#">Notícias</a></li>
+                        <li><a href="#">Política</a></li>
+                        <li><a href="#">Saúde</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Institucional</h4>
+                    <ul>
+                        <li><a href="#">Quem Somos</a></li>
+                        <li><a href="#">Fale Conosco</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Termos de Uso</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contato</h4>
+                    <p style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="#ccc"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        (94) 984 33 16 18
+                    </p>
+                    <p style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="#ccc"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        (94) 984 33 16 18
+                    </p>
+                    <p style="display: flex; align-items: center; gap: 8px;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="#ccc"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        contato@jornaldacidade.maraba.pa
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="resultado-modal" id="resultadoModal">
+        <div class="resultado-content">
+            <h2 id="modalTitle">Resultado da Enquete</h2>
+            <div id="modalBody"></div>
+            <button class="close-modal" onclick="closeModal()">Fechar</button>
+        </div>
+    </div>
+
+    <script>
+        let avaliacaoSelecionada = null;
+        let vereadoresProjetos = [];
+        let vereadorDestaque = null;
+
+        function initRadioOptions() {
+            document.querySelectorAll('.custom-select-dropdown').forEach(dropdown => {
+                dropdown.querySelectorAll('.custom-select-option').forEach(opt => {
+                    const text = opt.textContent;
+                    const value = opt.getAttribute('data-value');
+                    if (value) {
+                        const match = text.match(/^(.+?)\s-\s(.+?)\s\((.+?)\)$/);
+                        if (match) {
+                            const vulgo = match[1];
+                            const partido = match[2];
+                            const nomeCompleto = match[3];
+                            opt.innerHTML = `<span class="vereador-info"><span class="vereador-vulgo">${vulgo}</span> - <span class="vereador-partido">${partido}</span><br><span class="vereador-nome">${nomeCompleto}</span></span><span class="option-radio"><span class="option-radio-inner"></span></span>`;
+                        } else {
+                            opt.innerHTML = `<span>${text}</span><span class="option-radio"><span class="option-radio-inner"></span></span>`;
+                        }
+                    }
+                });
+            });
+        }
+
+        initRadioOptions();
+
+        document.querySelectorAll('.has-dropdown > a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const parent = this.parentElement;
+                parent.classList.toggle('open');
+            });
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.has-dropdown')) {
+                document.querySelectorAll('.has-dropdown.open').forEach(el => {
+                    el.classList.remove('open');
+                });
+            }
+            if (!e.target.closest('.custom-select-wrapper')) {
+                document.querySelectorAll('.custom-select-wrapper.open').forEach(el => {
+                    el.classList.remove('open');
+                });
+            }
+        });
+
+        function aceitarCookies() {
+            document.getElementById('cookie-banner').classList.add('hidden');
+            localStorage.setItem('cookiesAceitos', 'true');
+        }
+
+        if (localStorage.getItem('cookiesAceitos') === 'true') {
+            document.getElementById('cookie-banner').classList.add('hidden');
+        }
+
+        function selectAvaliacao(input) {
+            avaliacaoSelecionada = input.value;
+        }
+
+        function toggleDropdown(wrapperId) {
+            const wrapper = document.getElementById(wrapperId);
+            wrapper.classList.toggle('open');
+        }
+
+        function selectVereadorProjeto(value, text) {
+            const wrapper = document.getElementById('select_projetos_wrapper');
+            
+            if (!value) {
+                wrapper.classList.remove('open');
+                return;
+            }
+            
+            if (vereadoresProjetos.some(v => v.value === value)) {
+                vereadoresProjetos = vereadoresProjetos.filter(v => v.value !== value);
+            } else {
+                if (vereadoresProjetos.length >= 5) {
+                    alert('Você pode selecionar apenas até 5 vereadores.');
+                    wrapper.classList.remove('open');
+                    return;
+                }
+                vereadoresProjetos.push({ value, text });
+            }
+            
+            if (vereadoresProjetos.length === 0) {
+                wrapper.querySelector('.custom-select-trigger').textContent = 'Selecione...';
+            } else if (vereadoresProjetos.length === 5) {
+                wrapper.querySelector('.custom-select-trigger').textContent = '5 selecionados';
+            } else {
+                wrapper.querySelector('.custom-select-trigger').textContent = `${vereadoresProjetos.length} selecionados`;
+            }
+            
+            updateDropdownOptionsProjetos();
+        }
+
+        function updateDropdownOptionsProjetos() {
+            const dropdown = document.getElementById('dropdown_projetos');
+            dropdown.querySelectorAll('.custom-select-option').forEach(opt => {
+                const val = opt.getAttribute('data-value');
+                if (vereadoresProjetos.some(v => v.value === val)) {
+                    opt.classList.add('selected');
+                } else {
+                    opt.classList.remove('selected');
+                }
+            });
+        }
+
+        function selectVereadorDestaque(value, text) {
+            const wrapper = document.getElementById('select_destaque_wrapper');
+            wrapper.classList.remove('open');
+            
+            if (value) {
+                vereadorDestaque = { value, text };
+                wrapper.querySelector('.custom-select-trigger').textContent = text;
+            } else {
+                vereadorDestaque = null;
+                wrapper.querySelector('.custom-select-trigger').textContent = 'Selecione...';
+            }
+            
+            updateDropdownOptionsDestaque();
+        }
+
+        function updateDropdownOptionsDestaque() {
+            const dropdown = document.getElementById('dropdown_destaque');
+            dropdown.querySelectorAll('.custom-select-option').forEach(opt => {
+                const val = opt.getAttribute('data-value');
+                if (vereadorDestaque && vereadorDestaque.value === val) {
+                    opt.classList.add('selected');
+                } else {
+                    opt.classList.remove('selected');
+                }
+            });
+        }
+
+        function votar() {
+            if (!avaliacaoSelecionada && vereadoresProjetos.length === 0 && !vereadorDestaque) {
+                alert('Por favor, responda pelo menos uma questão antes de votar.');
+                return;
+            }
+
+            const modalBody = document.getElementById('modalBody');
+            modalBody.innerHTML = `
+                <div class="success-message">
+                    ✓ Voto registrado com sucesso! Obrigado por participar!
+                </div>
+                <div class="total-votos">Total de votos: 1.847 participantes</div>
+                
+                <div class="resultado-item">
+                    <h4>Desempenho da Câmara Municipal:</h4>
+                    <div class="resultado-bar">
+                        <span class="bar-label">Bom</span>
+                        <div class="bar-container"><div class="bar-fill bom" style="width: 32%"></div></div>
+                        <span class="bar-percent">591</span>
+                    </div>
+                    <div class="resultado-bar">
+                        <span class="bar-label">Razoável</span>
+                        <div class="bar-container"><div class="bar-fill razoavel" style="width: 45%"></div></div>
+                        <span class="bar-percent">831</span>
+                    </div>
+                    <div class="resultado-bar">
+                        <span class="bar-label">Ruim</span>
+                        <div class="bar-container"><div class="bar-fill ruim" style="width: 23%"></div></div>
+                        <span class="bar-percent">425</span>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('modalTitle').textContent = 'Voto Registrado!';
+            document.getElementById('resultadoModal').classList.add('active');
+        }
+
+        function mostrarResultado() {
+            const modalBody = document.getElementById('modalBody');
+            modalBody.innerHTML = `
+                <div class="total-votos">Total de votos: 1.847 participantes</div>
+                
+                <div class="resultado-item">
+                    <h4>Desempenho da Câmara Municipal:</h4>
+                    <div class="resultado-bar">
+                        <span class="bar-label">Bom</span>
+                        <div class="bar-container"><div class="bar-fill bom" style="width: 32%"></div></div>
+                        <span class="bar-percent">591</span>
+                    </div>
+                    <div class="resultado-bar">
+                        <span class="bar-label">Razoável</span>
+                        <div class="bar-container"><div class="bar-fill razoavel" style="width: 45%"></div></div>
+                        <span class="bar-percent">831</span>
+                    </div>
+                    <div class="resultado-bar">
+                        <span class="bar-label">Ruim</span>
+                        <div class="bar-container"><div class="bar-fill ruim" style="width: 23%"></div></div>
+                        <span class="bar-percent">425</span>
+                    </div>
+                </div>
+
+                <div class="resultado-item">
+                    <h4>Top 5 Vereadores com Bons Projetos:</h4>
+                    <div class="resultado-bar">
+                        <span class="bar-label">Dra. Cristina</span>
+                        <div class="bar-container"><div class="bar-fill verde" style="width: 28%"></div></div>
+                        <span class="bar-percent">517</span>
+                    </div>
+                    <div class="resultado-bar">
+                        <span class="bar-label">Cabo Rodrigo</span>
+                        <div class="bar-container"><div class="bar-fill verde" style="width: 22%"></div></div>
+                        <span class="bar-percent">406</span>
+                    </div>
+                    <div class="resultado-bar">
+                        <span class="bar-label">Maiana Stringari</span>
+                        <div class="bar-container"><div class="bar-fill verde" style="width: 18%"></div></div>
+                        <span class="bar-percent">333</span>
+                    </div>
+                    <div class="resultado-bar">
+                        <span class="bar-label">Fernando Henrique</span>
+                        <div class="bar-container"><div class="bar-fill verde" style="width: 15%"></div></div>
+                        <span class="bar-percent">277</span>
+                    </div>
+                    <div class="resultado-bar">
+                        <span class="bar-label">Pacheco</span>
+                        <div class="bar-container"><div class="bar-fill verde" style="width: 12%"></div></div>
+                        <span class="bar-percent">221</span>
+                    </div>
+                </div>
+
+                <div class="resultado-item">
+                    <h4>Destaque de Excelência do Mandato:</h4>
+                    <div class="resultado-bar">
+                        <span class="bar-label">Dra. Cristina</span>
+                        <div class="bar-container"><div class="bar-fill verde" style="width: 35%"></div></div>
+                        <span class="bar-percent">646</span>
+                    </div>
+                    <div class="resultado-bar">
+                        <span class="bar-label">Cabo Rodrigo</span>
+                        <div class="bar-container"><div class="bar-fill verde" style="width: 25%"></div></div>
+                        <span class="bar-percent">462</span>
+                    </div>
+                    <div class="resultado-bar">
+                        <span class="bar-label">Maiana Stringari</span>
+                        <div class="bar-container"><div class="bar-fill verde" style="width: 20%"></div></div>
+                        <span class="bar-percent">369</span>
+                    </div>
+                    <div class="resultado-bar">
+                        <span class="bar-label">Ilker Moraes</span>
+                        <div class="bar-container"><div class="bar-fill verde" style="width: 12%"></div></div>
+                        <span class="bar-percent">222</span>
+                    </div>
+                    <div class="resultado-bar">
+                        <span class="bar-label">Ronaldo da 33</span>
+                        <div class="bar-container"><div class="bar-fill verde" style="width: 8%"></div></div>
+                        <span class="bar-percent">148</span>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('modalTitle').textContent = 'Resultados da Enquete 2025';
+            document.getElementById('resultadoModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('resultadoModal').classList.remove('active');
+        }
+
+        document.getElementById('resultadoModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
